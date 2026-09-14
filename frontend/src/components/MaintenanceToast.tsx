@@ -24,28 +24,34 @@ export const MaintenanceToast: React.FC<MaintenanceToastProps> = ({
 
   return (
     <div className="fixed bottom-6 right-6 z-50 max-w-sm animate-in fade-in slide-in-from-bottom-5 duration-300">
-      <div className="bg-[#0e6cb8] text-white rounded-[20px] px-6 py-4 shadow-2xl border border-white/10 relative flex items-start justify-between gap-4">
-        <div>
-          <p className="font-bold text-white text-[15px] leading-snug tracking-[-0.01em]">
-            This feature is currently<br />
-            unavailable due to maintenance.
-          </p>
-          <p className="text-blue-100/90 text-sm mt-1 tracking-[-0.01em]">
-            Please try again later.
-          </p>
+      <div className="bg-[#0e6cb8] text-white rounded-[20px] px-6 py-4 shadow-2xl border border-white/20 relative overflow-hidden flex flex-col gap-3">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="font-bold text-white text-[15px] leading-snug tracking-[-0.01em]">
+              This feature is currently<br />
+              unavailable due to maintenance.
+            </p>
+            <p className="text-blue-100/90 text-sm mt-1 tracking-[-0.01em]">
+              Please try again later.
+            </p>
+          </div>
+
+          <button
+            onClick={onClose}
+            className="text-white/70 hover:text-white p-1 rounded-md transition-colors"
+            aria-label="Close notification"
+          >
+            <X size={18} />
+          </button>
         </div>
 
-        <button
-          onClick={onClose}
-          className="text-white/70 hover:text-white p-1 rounded-md transition-colors"
-          aria-label="Close notification"
-        >
-          <X size={18} />
-        </button>
+        {/* Animated Progress Countdown Bar */}
+        <div className="w-full bg-white/20 h-1 rounded-full overflow-hidden mt-0.5">
+          <div className="bg-white h-full animate-toast-progress rounded-full" />
+        </div>
       </div>
     </div>
   );
 };
 
 export default MaintenanceToast;
-

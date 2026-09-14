@@ -67,14 +67,14 @@ export const WhyChooseUsSection: React.FC = () => {
         {/* 6 Features Grid (3 cols on desktop, 2 on tablet, 1 on mobile) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
           {features.map((item, index) => (
-            <div key={index} className="flex flex-col items-start group">
-              {/* Circular White Icon Badge */}
-              <div className="w-12 h-12 rounded-full bg-white text-[#0e6cb8] flex items-center justify-center shadow-md mb-5 group-hover:scale-110 transition-transform duration-200">
+            <div key={index} className="flex flex-col items-start group hover:-translate-y-1.5 transition-transform duration-300 cursor-default">
+              {/* Circular White Icon Badge with bounce & rotation */}
+              <div className="w-12 h-12 rounded-full bg-white text-[#0e6cb8] flex items-center justify-center shadow-md mb-5 group-hover:scale-115 group-hover:rotate-6 group-hover:shadow-xl transition-all duration-300">
                 {item.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-xl sm:text-[22px] font-bold text-white mb-2.5 tracking-[-0.02em]">
+              <h3 className="text-xl sm:text-[22px] font-bold text-white mb-2.5 tracking-[-0.02em] group-hover:text-blue-100 transition-colors">
                 {item.title}
               </h3>
 

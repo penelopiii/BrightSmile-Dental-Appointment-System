@@ -34,7 +34,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-        className="bg-white rounded-[24px] max-w-lg w-full p-8 sm:p-10 shadow-2xl relative border border-slate-100 max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-[24px] max-w-lg w-full p-8 sm:p-10 shadow-2xl relative border border-slate-100 max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-200"
         role="dialog"
         aria-modal="true"
       >

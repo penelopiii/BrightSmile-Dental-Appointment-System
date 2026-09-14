@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="BrightSmile on Instagram"
-              className="p-1 text-white hover:text-blue-200 hover:scale-110 transition-all duration-200"
+              className="p-1 text-white hover:text-blue-200 hover:scale-125 hover:-translate-y-1 transition-all duration-200"
             >
               <svg
                 className="w-6 h-6 fill-none stroke-current stroke-[2] stroke-linecap-round stroke-linejoin-round"
@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="BrightSmile on Twitter"
-              className="p-1 text-white hover:text-blue-200 hover:scale-110 transition-all duration-200"
+              className="p-1 text-white hover:text-blue-200 hover:scale-125 hover:-translate-y-1 transition-all duration-200"
             >
               <svg
                 className="w-6 h-6 fill-current"
@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="BrightSmile on Facebook"
-              className="p-1 text-white hover:text-blue-200 hover:scale-110 transition-all duration-200"
+              className="p-1 text-white hover:text-blue-200 hover:scale-125 hover:-translate-y-1 transition-all duration-200"
             >
               <svg
                 className="w-6 h-6 fill-current"

@@ -37,7 +37,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   ];
 
   return (
-    <section id="services" className="w-full bg-white py-16 sm:py-24 border-t border-slate-100">
+    <section id="services" className="w-full bg-white pt-10 pb-16 sm:pt-12 sm:pb-20 border-t border-slate-100">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
         <div className="mb-10 sm:mb-14">
@@ -55,7 +55,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             <div
               key={index}
               onClick={() => onSelectService?.(service)}
-              className="group bg-white rounded-2xl p-7 sm:p-8 shadow-[0_4px_28px_rgba(0,0,0,0.06)] border border-slate-100/90 flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 hover:border-blue-200 transition-all duration-300 cursor-pointer"
+              className="group bg-white rounded-2xl p-7 sm:p-8 shadow-[0_4px_28px_rgba(0,0,0,0.06)] border border-slate-100/90 flex flex-col justify-between hover:shadow-[0_20px_45px_rgba(14,108,184,0.12)] hover:-translate-y-2 hover:border-blue-200 transition-all duration-300 cursor-pointer"
             >
               {/* Top part: Title & Description */}
               <div>
@@ -69,12 +69,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
               {/* Bottom part: Price & Duration */}
               <div className="pt-8 sm:pt-10 mt-6 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-3xl sm:text-4xl font-black text-[#0e6cb8] tracking-[-0.02em]">
+                <span className="text-3xl sm:text-4xl font-black text-[#0e6cb8] tracking-[-0.02em] group-hover:scale-105 transition-transform duration-200 origin-left inline-block">
                   {service.price}
                 </span>
 
                 <div className="flex items-center gap-1.5 text-slate-500 text-sm font-medium">
-                  <Clock size={16} className="text-slate-400 stroke-[2.2]" />
+                  <Clock size={16} className="text-slate-400 stroke-[2.2] group-hover:rotate-45 transition-transform duration-300" />
                   <span>{service.duration}</span>
                 </div>
               </div>

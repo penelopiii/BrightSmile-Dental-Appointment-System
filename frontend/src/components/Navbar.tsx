@@ -15,7 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
   ];
 
   return (
-    <header className="w-full bg-white/95 sticky top-0 z-50 backdrop-blur-md border-b border-slate-100/80">
+    <header className="w-full bg-[#eef6fc]/95 sticky top-0 z-50 backdrop-blur-md border-b border-blue-100/60">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-5 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="#" className="flex items-center gap-1 group">
