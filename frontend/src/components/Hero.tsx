@@ -6,134 +6,168 @@ interface HeroProps {
   onVisitClinic?: () => void;
 }
 
+interface FloatingReviewCard {
+  name: string;
+  location: string;
+  statement: React.ReactNode;
+  desktopPosition: string;
+  animationClass: string;
+}
+
 export const Hero: React.FC<HeroProps> = ({
   onBookAppointment,
   onVisitClinic,
 }) => {
+  // 6 Scattered Review Cards with unique, organic coordinates & rotations
+  const cards: FloatingReviewCard[] = [
+    {
+      name: '@its_john',
+      location: 'Manila, Philippines',
+      statement: (
+        <>
+          The booking process was <strong className="font-bold text-slate-800">incredibly fast.</strong>
+        </>
+      ),
+      // Upper-left, shifted inward toward headline
+      desktopPosition: 'top-10 lg:top-14 left-6 xl:left-20 -rotate-2',
+      animationClass: 'animate-float-1',
+    },
+    {
+      name: 'Mary Grace',
+      location: 'Makati, Philippines',
+      statement: (
+        <>
+          Wow! <strong className="font-bold text-slate-800">Modern &amp; Clean facilities..</strong>
+        </>
+      ),
+      // Lower-left, shifted to far left edge (matching reference image)
+      desktopPosition: 'bottom-10 lg:bottom-16 left-0 xl:left-4 rotate-[1.5deg]',
+      animationClass: 'animate-float-2',
+    },
+    {
+      name: '@charlotte_k',
+      location: 'Quezon City, Philippines',
+      statement: (
+        <>
+          Best dental experience! Completely <strong className="font-bold text-slate-800">painless and gentle.</strong>
+        </>
+      ),
+      // Mid-left, staggered inward between top and bottom
+      desktopPosition: 'top-[48%] left-10 xl:left-24 -translate-y-1/2 -rotate-1',
+      animationClass: 'animate-float-3',
+    },
+    {
+      name: '@justin_',
+      location: 'Manila, Philippines',
+      statement: <>I appreciate the staff &amp; dentist so much...</>,
+      // Upper-right, shifted near the outer edge
+      desktopPosition: 'top-12 lg:top-16 right-4 xl:right-16 rotate-2',
+      animationClass: 'animate-float-2',
+    },
+    {
+      name: 'David Tan',
+      location: 'Taguig, Philippines',
+      statement: (
+        <>
+          State-of-the-art clinic setup, <strong className="font-bold text-slate-800">super clean</strong> and organized.
+        </>
+      ),
+      // Lower-right, tucked closer to the center
+      desktopPosition: 'bottom-10 lg:bottom-16 right-10 xl:right-24 -rotate-2',
+      animationClass: 'animate-float-4',
+    },
+    {
+      name: '@sophia_m',
+      location: 'Pasig, Philippines',
+      statement: (
+        <>
+          Friendly dentists who explain every step clearly. <strong className="font-bold text-slate-800">10/10 service!</strong>
+        </>
+      ),
+      // Mid-right, pushed outward
+      desktopPosition: 'top-[50%] right-2 xl:right-8 -translate-y-1/2 rotate-1',
+      animationClass: 'animate-float-1',
+    },
+  ];
+
   return (
-    <section className="relative w-full bg-[#f0f7fd] overflow-hidden pt-8 pb-16 lg:pt-12 lg:pb-20 border-b border-blue-100/40">
-      {/* Big Watermark Typography in Background */}
-      <div aria-hidden="true" className="pointer-events-none select-none absolute inset-0 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 z-0">
-        {/* Top Left: 12 Years operating */}
-        <div className="absolute top-2 left-4 sm:left-8 lg:left-12 text-[#94c1ec]/55 font-black text-4xl sm:text-6xl lg:text-7xl leading-tight tracking-[-0.02em]">
-          12 Years<br />operating
+    <section className="relative w-full bg-gradient-to-b from-[#ffffff] via-[#eaf5fe] via-45% to-[#bfe2fa] overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 border-b border-blue-100/60">
+      <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 min-h-[640px] lg:min-h-[760px] xl:min-h-[820px] flex items-center justify-center">
+        
+        {/* Desktop Scattered Review Cards (Floating organically across the canvas) */}
+        {cards.map((card, idx) => (
+          <div
+            key={idx}
+            className={`hidden lg:block absolute z-10 bg-white rounded-[24px] p-5 xl:p-6 shadow-[0_12px_36px_rgba(0,0,0,0.06)] border border-slate-100/90 w-[220px] xl:w-[255px] hover:scale-110 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 cursor-pointer ${card.desktopPosition} ${card.animationClass}`}
+          >
+            <p className="text-[#0e6cb8] font-bold text-base tracking-[-0.02em]">
+              {card.name}
+            </p>
+            <p className="text-slate-400 text-xs mt-0.5 mb-2.5 tracking-[-0.01em]">
+              {card.location}
+            </p>
+            <p className="text-slate-600 text-[13.5px] leading-snug tracking-[-0.01em]">
+              {card.statement}
+            </p>
+          </div>
+        ))}
+
+        {/* Center Content Block: Expanded Headline, Subtitle, CTA Buttons */}
+        <div className="relative z-20 flex flex-col items-center text-center max-w-3xl mx-auto py-8 sm:py-14">
+          {/* Main Title: Expanded Semibold with "Our Priority." in system blue */}
+          <h1 className="text-5xl sm:text-7xl lg:text-[80px] xl:text-[90px] font-semibold tracking-[-0.02em] leading-[1.08] mb-7 sm:mb-9">
+            <span className="text-[#102a45] block">Your Smile,</span>
+            <span className="text-[#0e6cb8] block">Our Priority.</span>
+          </h1>
+
+          {/* Subtitle: Expanded & Relaxed */}
+          <p className="text-[#3d526b] text-lg sm:text-xl lg:text-[22px] font-normal leading-relaxed max-w-2xl mb-10 sm:mb-12 tracking-[-0.01em]">
+            Experience gentle, professional dental care from online booking to your healthy recovery. Friendly dentists, modern setups.
+          </p>
+
+          {/* CTA Buttons: Generous size & padding */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full sm:w-auto">
+            <button
+              onClick={onBookAppointment}
+              className="w-full sm:w-auto bg-[#0e6cb8] hover:bg-[#0c5ba0] active:scale-[0.98] text-white font-semibold text-base sm:text-lg px-8 py-4 sm:px-9 sm:py-4.5 rounded-2xl shadow-md hover:shadow-lg flex items-center justify-center gap-3 transition-all duration-200 tracking-[-0.01em]"
+            >
+              <span>Book Appointment</span>
+              <Calendar size={21} className="stroke-[2.2]" />
+            </button>
+
+            <button
+              onClick={onVisitClinic}
+              className="w-full sm:w-auto bg-white/85 backdrop-blur-xs hover:bg-white active:scale-[0.98] text-[#0e6cb8] font-semibold text-base sm:text-lg px-8 py-4 sm:px-9 sm:py-4.5 rounded-2xl border-2 border-[#0e6cb8]/40 hover:border-[#0e6cb8] transition-all duration-200 tracking-[-0.01em] shadow-xs"
+            >
+              Visit Our Clinic
+            </button>
+          </div>
         </div>
 
-        {/* Top Right: 2000+ customers */}
-        <div className="absolute top-2 right-4 sm:right-8 lg:right-12 text-right text-[#94c1ec]/55 font-black text-4xl sm:text-6xl lg:text-7xl leading-tight tracking-[-0.02em]">
-          2000+<br />customers
-        </div>
-
-        {/* Lower Left: industry-grade */}
-        <div className="hidden md:block absolute bottom-2 left-4 sm:left-8 lg:left-12 text-[#94c1ec]/50 font-black text-4xl sm:text-5xl lg:text-6xl tracking-[-0.02em]">
-          industry-grade
-        </div>
-
-        {/* Lower Right: modernized */}
-        <div className="hidden md:block absolute bottom-2 right-4 sm:right-8 lg:right-12 text-[#94c1ec]/50 font-black text-4xl sm:text-5xl lg:text-6xl tracking-[-0.02em]">
-          modernized
-        </div>
       </div>
 
-      {/* Main Hero Container */}
-      <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Responsive 3-Column Layout on Desktop ensuring NO overlap */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-4 pt-4 pb-8 sm:py-10">
-          
-          {/* Left Column: Floating Review Badges (lg:col-span-3) */}
-          <div className="hidden lg:flex lg:col-span-3 flex-col gap-8 justify-center items-start">
-            {/* Card 1: @its_john */}
-            <div className="bg-white rounded-[24px] p-6 shadow-[0_10px_35px_rgba(0,0,0,0.06)] border border-slate-100/90 w-full max-w-[250px] hover:-translate-y-1 transition-transform duration-300">
-              <p className="text-[#0e6cb8] font-bold text-base tracking-[-0.02em]">@its_john</p>
-              <p className="text-slate-400 text-xs mt-0.5 mb-2.5 tracking-[-0.01em]">Manila, Philippines</p>
-              <p className="text-slate-600 text-[13px] leading-snug tracking-[-0.01em]">
-                The booking process was <strong className="font-bold text-slate-800">incredibly fast.</strong>
-              </p>
+      {/* Mobile & Tablet view: 6 cards in a staggered responsive grid with floating animations */}
+      <div className="lg:hidden max-w-[1440px] mx-auto px-4 sm:px-6 mt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {cards.map((card, idx) => (
+            <div
+              key={idx}
+              className={`bg-white rounded-[22px] p-5 shadow-[0_6px_20px_rgba(0,0,0,0.05)] border border-slate-100 flex flex-col justify-between hover:scale-[1.02] transition-transform ${card.animationClass}`}
+            >
+              <div>
+                <p className="text-[#0e6cb8] font-bold text-sm tracking-[-0.02em]">
+                  {card.name}
+                </p>
+                <p className="text-slate-400 text-xs tracking-[-0.01em] mt-0.5 mb-2">
+                  {card.location}
+                </p>
+                <p className="text-slate-600 text-xs leading-relaxed tracking-[-0.01em]">
+                  {card.statement}
+                </p>
+              </div>
             </div>
-
-            {/* Card 2: Mary Grace */}
-            <div className="bg-white rounded-[24px] p-6 shadow-[0_10px_35px_rgba(0,0,0,0.06)] border border-slate-100/90 w-full max-w-[250px] hover:-translate-y-1 transition-transform duration-300">
-              <p className="text-[#0e6cb8] font-bold text-base tracking-[-0.02em]">Mary Grace</p>
-              <p className="text-slate-400 text-xs mt-0.5 mb-2.5 tracking-[-0.01em]">Makati, Philippines</p>
-              <p className="text-slate-600 text-[13px] leading-snug tracking-[-0.01em]">
-                Wow! <strong className="font-bold text-slate-800">Modern &amp; Clean facilities..</strong>
-              </p>
-            </div>
-          </div>
-
-          {/* Center Column: Headline, Subtitle, CTA Buttons (lg:col-span-6) */}
-          <div className="lg:col-span-6 flex flex-col items-center text-center px-2 sm:px-4">
-            {/* Main Title: Semibold with "Our Priority." in system blue */}
-            <h1 className="text-5xl sm:text-6xl lg:text-[72px] xl:text-[76px] font-semibold tracking-[-0.02em] leading-[1.08] mb-6 sm:mb-7">
-              <span className="text-[#102a45] block">Your Smile,</span>
-              <span className="text-[#0e6cb8] block">Our Priority.</span>
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-[#3d526b] text-base sm:text-lg lg:text-xl font-normal leading-relaxed max-w-xl mb-8 sm:mb-10 tracking-[-0.01em]">
-              Experience gentle, professional dental care from online booking to your healthy recovery. Friendly dentists, modern setups.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full sm:w-auto">
-              <button
-                onClick={onBookAppointment}
-                className="w-full sm:w-auto bg-[#0e6cb8] hover:bg-[#0c5ba0] active:scale-[0.98] text-white font-semibold text-base px-7 py-3.5 rounded-xl shadow-sm hover:shadow-md flex items-center justify-center gap-2.5 transition-all duration-200 tracking-[-0.01em]"
-              >
-                <span>Book Appointment</span>
-                <Calendar size={19} className="stroke-[2.2]" />
-              </button>
-
-              <button
-                onClick={onVisitClinic}
-                className="w-full sm:w-auto bg-[#e5f1fc] hover:bg-[#d8eafb] active:scale-[0.98] text-[#0e6cb8] font-semibold text-base px-7 py-3.5 rounded-xl border border-[#0e6cb8]/60 transition-all duration-200 tracking-[-0.01em]"
-              >
-                Visit Our Clinic
-              </button>
-            </div>
-          </div>
-
-          {/* Right Column: Floating Review Badge (lg:col-span-3) */}
-          <div className="hidden lg:flex lg:col-span-3 flex-col justify-center items-end">
-            {/* Card 3: @justin_ */}
-            <div className="bg-white rounded-[24px] p-6 shadow-[0_10px_35px_rgba(0,0,0,0.06)] border border-slate-100/90 w-full max-w-[250px] hover:-translate-y-1 transition-transform duration-300">
-              <p className="text-[#0e6cb8] font-bold text-base tracking-[-0.02em]">@justin_</p>
-              <p className="text-slate-400 text-xs mt-0.5 mb-2.5 tracking-[-0.01em]">Manila, Philippines</p>
-              <p className="text-slate-600 text-[13px] leading-snug tracking-[-0.01em]">
-                I appreciate the staff &amp; dentist so much...
-              </p>
-            </div>
-          </div>
-
+          ))}
         </div>
-
-        {/* Mobile & Tablet preview of the 3 cards (cleanly stacked below CTA buttons) */}
-        <div className="lg:hidden grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 relative z-10">
-          <div className="bg-white rounded-[20px] p-4 shadow-[0_6px_20px_rgba(0,0,0,0.05)] border border-slate-100">
-            <p className="text-[#0e6cb8] font-bold text-sm tracking-[-0.02em]">@its_john</p>
-            <p className="text-slate-400 text-xs tracking-[-0.01em]">Manila, Philippines</p>
-            <p className="text-slate-600 text-xs mt-2 leading-relaxed tracking-[-0.01em]">
-              The booking process was <strong className="font-semibold text-slate-800">incredibly fast.</strong>
-            </p>
-          </div>
-
-          <div className="bg-white rounded-[20px] p-4 shadow-[0_6px_20px_rgba(0,0,0,0.05)] border border-slate-100">
-            <p className="text-[#0e6cb8] font-bold text-sm tracking-[-0.02em]">Mary Grace</p>
-            <p className="text-slate-400 text-xs tracking-[-0.01em]">Makati, Philippines</p>
-            <p className="text-slate-600 text-xs mt-2 leading-relaxed tracking-[-0.01em]">
-              Wow! <strong className="font-semibold text-slate-800">Modern &amp; Clean facilities..</strong>
-            </p>
-          </div>
-
-          <div className="bg-white rounded-[20px] p-4 shadow-[0_6px_20px_rgba(0,0,0,0.05)] border border-slate-100">
-            <p className="text-[#0e6cb8] font-bold text-sm tracking-[-0.02em]">@justin_</p>
-            <p className="text-slate-400 text-xs tracking-[-0.01em]">Manila, Philippines</p>
-            <p className="text-slate-600 text-xs mt-2 leading-relaxed tracking-[-0.01em]">
-              I appreciate the staff &amp; dentist so much...
-            </p>
-          </div>
-        </div>
-
       </div>
     </section>
   );

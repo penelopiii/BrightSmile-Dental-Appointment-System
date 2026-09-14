@@ -1,24 +1,32 @@
 import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ReviewsRow from './components/ReviewsRow';
 import ServicesSection from './components/ServicesSection';
 import WhyChooseUsSection from './components/WhyChooseUsSection';
 import FindUsSection from './components/FindUsSection';
 import Footer from './components/Footer';
-import BookingModal from './components/BookingModal';
+import MaintenanceToast from './components/MaintenanceToast';
+import ContactModal from './components/ContactModal';
 
 function App() {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<string>('Dental Cleaning');
+  const [isToastOpen, setIsToastOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
-  const handleBookAppointment = (serviceName?: string) => {
-    if (serviceName) {
-      setSelectedService(serviceName);
-    }
-    setIsBookingOpen(true);
+  // Trigger maintenance toast on booking click
+  const handleBookAppointment = () => {
+    setIsToastOpen(false);
+    // slight timeout to trigger animation if already visible
+    setTimeout(() => {
+      setIsToastOpen(true);
+    }, 50);
   };
 
+  // Open Contact Us modal on contact click in navbar
+  const handleContactClick = () => {
+    setIsContactModalOpen(true);
+  };
+
+  // Scroll down to Find Us / Clinic map section
   const handleVisitClinic = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -29,25 +37,18 @@ function App() {
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-blue-100 selection:text-[#0e6cb8]">
       {/* Top Navbar */}
-      <Navbar onContactClick={handleVisitClinic} />
+      <Navbar onContactClick={handleContactClick} />
 
       {/* Main Landing Page Content */}
       <main className="flex-1">
-        {/* Hero Section with Large Typography & Floating Review Cards */}
+        {/* Expanded Hero Section with Luminous Sky-Blue Gradient & 6 Floating Cards */}
         <Hero
-          onBookAppointment={() => handleBookAppointment()}
+          onBookAppointment={handleBookAppointment}
           onVisitClinic={handleVisitClinic}
         />
 
-        {/* 3 Review Cards directly below hero */}
-        <ReviewsRow />
-
         {/* Our Services Section */}
-        <ServicesSection
-          onSelectService={(service) =>
-            handleBookAppointment(service.title.replace('\n', ' '))
-          }
-        />
+        <ServicesSection onSelectService={handleBookAppointment} />
 
         {/* Why Choose Us Section (Full-width rich blue) */}
         <WhyChooseUsSection />
@@ -59,11 +60,16 @@ function App() {
       {/* Footer Section (Full-width rich blue) */}
       <Footer />
 
-      {/* Interactive Appointment Booking Modal */}
-      <BookingModal
-        isOpen={isBookingOpen}
-        onClose={() => setIsBookingOpen(false)}
-        initialService={selectedService}
+      {/* Maintenance Toast Notification when clicking Book Appointment */}
+      <MaintenanceToast
+        isVisible={isToastOpen}
+        onClose={() => setIsToastOpen(false)}
+      />
+
+      {/* Contact Us Modal when clicking Contact Us in Navbar */}
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
       />
     </div>
   );

@@ -15,7 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
   ];
 
   return (
-    <header className="w-full bg-[#f4f9fd] sticky top-0 z-50 backdrop-blur-md bg-opacity-95 border-b border-blue-50/50">
+    <header className="w-full bg-white/95 sticky top-0 z-50 backdrop-blur-md border-b border-slate-100/80">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-5 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="#" className="flex items-center gap-1 group">
@@ -39,13 +39,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
           </div>
 
           {/* Contact Us Pill Button */}
-          <a
-            href="#contact"
+          <button
+            type="button"
             onClick={onContactClick}
-            className="bg-[#0e6cb8] hover:bg-[#0c5ba0] active:scale-95 text-white font-semibold text-[15px] px-6 py-2.5 rounded-full shadow-sm hover:shadow transition-all duration-200"
+            className="bg-[#0e6cb8] hover:bg-[#0c5ba0] active:scale-95 text-white font-semibold text-[15px] px-6 py-2.5 rounded-full shadow-sm hover:shadow transition-all duration-200 cursor-pointer"
           >
             Contact Us
-          </a>
+          </button>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -75,16 +75,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
               </a>
             ))}
             <div className="pt-2">
-              <a
-                href="#contact"
+              <button
+                type="button"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   if (onContactClick) onContactClick();
                 }}
-                className="inline-block text-center w-full bg-[#0e6cb8] hover:bg-[#0c5ba0] text-white font-semibold text-[15px] py-3 rounded-full shadow-sm transition-all"
+                className="inline-block text-center w-full bg-[#0e6cb8] hover:bg-[#0c5ba0] text-white font-semibold text-[15px] py-3 rounded-full shadow-sm transition-all cursor-pointer"
               >
                 Contact Us
-              </a>
+              </button>
             </div>
           </div>
         </div>
