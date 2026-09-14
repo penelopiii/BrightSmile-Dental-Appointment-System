@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrandIcon } from './BrandIcon';
 
 export const Footer: React.FC = () => {
   return (
@@ -8,9 +9,12 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-8">
           {/* Logo & Tagline */}
           <div>
-            <span className="text-2xl sm:text-3xl font-extrabold tracking-[-0.02em] select-none">
-              BrightSmile
-            </span>
+            <div className="flex items-center gap-2.5">
+              <BrandIcon variant="badge-white" className="w-8 h-8 sm:w-9 sm:h-9" />
+              <span className="text-2xl sm:text-3xl font-extrabold tracking-[-0.02em] select-none">
+                BrightSmile
+              </span>
+            </div>
             <p className="text-blue-100/90 text-sm sm:text-base font-normal mt-1.5 tracking-[-0.01em]">
               Your Smile, Our Priority.
             </p>

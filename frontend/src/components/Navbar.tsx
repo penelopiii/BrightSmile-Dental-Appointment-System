@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { BrandIcon } from './BrandIcon';
 
 interface NavbarProps {
   onContactClick?: () => void;
@@ -18,8 +19,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
     <header className="w-full bg-[#eef6fc]/95 sticky top-0 z-50 backdrop-blur-md border-b border-blue-100/60">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-5 flex items-center justify-between">
         {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-1 group">
-          <span className="text-2xl sm:text-[26px] font-extrabold tracking-[-0.02em] text-[#0e6cb8] select-none transition-transform group-hover:scale-[1.02]">
+        <a href="#" className="flex items-center gap-2.5 group">
+          <BrandIcon className="w-8 h-8 sm:w-9 sm:h-9" />
+          <span className="text-2xl sm:text-[26px] font-extrabold tracking-[-0.02em] text-[#0e6cb8] select-none transition-transform group-hover:scale-[1.01]">
             BrightSmile
           </span>
         </a>
